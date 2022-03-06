@@ -3,9 +3,7 @@ package jcf;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,12 +22,7 @@ public class HashSetProblem {
         for (int i = 0; i < strings.length; i++) {
             set.add(Integer.parseInt(strings[i]));
         }
-        for (int i = 0; i < helpList.size(); i++) {
-            set.add(helpList.get(i));
-        }
-
-        //add elements from helpList to set
-
+        set.addAll(helpList);
         set = removeAllNumbersMoreThan10(set);
         set.forEach(System.out::println);
     }
