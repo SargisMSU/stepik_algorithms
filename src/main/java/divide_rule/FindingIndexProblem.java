@@ -31,7 +31,7 @@ public class FindingIndexProblem {
     }
 
     static int findIndexInArray(int[] array, int elem){
-        int left = 0, m = 0;
+        int left = 0, m;
         int right = array.length - 1;
         while (left <= right) {
             m = left + (right - left) / 2;
