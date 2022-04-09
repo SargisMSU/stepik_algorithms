@@ -1,4 +1,4 @@
-package data_structures;
+package data_structures.base;
 
 import java.util.Arrays;
 import java.util.HashSet;

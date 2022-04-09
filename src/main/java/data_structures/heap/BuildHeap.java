@@ -1,4 +1,4 @@
-package data_structures;
+package data_structures.heap;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
