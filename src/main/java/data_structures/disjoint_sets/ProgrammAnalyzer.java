@@ -17,44 +17,6 @@ import java.util.Arrays;
 
 public class ProgrammAnalyzer {
 
-    static class DSF {
-        int[] parent; // ссылки
-        int[] rnk; // ранги
-
-        /* Конструктор */
-        DSF(int sz) {
-            parent = new int[sz];
-            rnk = new int[sz];
-            for (int i = 0; i < sz; i++)
-                make_set(i); // изначально все ссылки зациклены
-        }
-
-        void setRnk(int i, int rank) {
-            rnk[i] = rank;
-        }
-
-        void make_set(int v) {
-            parent[v] = v;
-        }
-
-        int find_set(int v) {
-            if (v == parent[v])
-                return v;
-            return parent[v] = find_set(parent[v]);
-        }
-
-        int union_sets(int a, int b) {
-            a = find_set(a);
-            b = find_set(b);
-            if (a != b) {
-                parent[b] = a;
-                rnk[b] = rnk[a] + rnk[b];
-                rnk[a] = rnk[b];
-            }
-            return rnk[b];
-        }
-    }
-
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int[] firstLine = Arrays.stream(reader.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
@@ -74,7 +36,6 @@ public class ProgrammAnalyzer {
             if (set1 == set2)
                 result = false;
         }
-
         System.out.println(result ? 1 : 0);
     }
 }
