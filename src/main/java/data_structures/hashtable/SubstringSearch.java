@@ -1,6 +1,8 @@
 package data_structures.hashtable;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class SubstringSearch {
     public static void main(String[] args) throws IOException {
@@ -17,7 +19,7 @@ public class SubstringSearch {
 
         char[] chars = text.toCharArray();
         for (int i = 1; i < text.length() - substring.length() + 1; i++) {
-            tempHash = (int) ((tempHash - chars[i - 1]) + chars[i + substring.length() - 1]);
+            tempHash = (tempHash - chars[i - 1]) + chars[i + substring.length() - 1];
             if (tempHash == substringHash && text.startsWith(substring, i)){
                 System.out.println(i);
             }
