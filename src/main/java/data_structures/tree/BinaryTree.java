@@ -11,6 +11,10 @@ import java.util.Arrays;
  * Вход. Двоичное дерево.
  * Выход. Все его вершины в трёх разных порядках: in-order, pre-order и post-order.
  */
+
+/*
+ * Печатать CORRECT, если вводимое дерево двоичное, INCORRECT - в обратном случае.
+ * */
 public class BinaryTree {
     static class Node {
         private int value; // ключ узла
@@ -66,6 +70,18 @@ public class BinaryTree {
             array[index] = newNode;
         }
 
+        public boolean isBinary(int index, int min, int max) {
+            int currentValue = array[index].getValue();
+            int leftChild = array[index].getLeftChild();
+            int rightChild = array[index].getRightChild();
+            if (currentValue > min && currentValue < max) {
+                boolean isLeftSubTreeBinary = leftChild == -1 || isBinary(leftChild, min, currentValue);
+                boolean isRightSubTreeBinary = rightChild == -1 || isBinary(rightChild, currentValue, max);
+                return isLeftSubTreeBinary && isRightSubTreeBinary;
+            } else
+                return false;
+        }
+
         public void printTreeInOrder(int index) {
             if (array[index].getLeftChild() != -1)
                 printTreeInOrder(array[index].getLeftChild());
@@ -104,10 +120,18 @@ public class BinaryTree {
                     .toArray();
             binaryTree.insertNode(i, insertLine[0], insertLine[1], insertLine[2]);
         }
+        if (n == 0) {
+            System.out.println("CORRECT");
+            return;
+        }
         binaryTree.printTreeInOrder(0);
         System.out.println();
         binaryTree.printTreePreOrder(0);
         System.out.println();
         binaryTree.printTreePostOrder(0);
+        System.out.println();
+
+        System.out.println(binaryTree.isBinary(0, Integer.MIN_VALUE, Integer.MAX_VALUE) ?
+                "CORRECT" : "INCORRECT");
     }
 }
